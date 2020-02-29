@@ -10,12 +10,12 @@ public class Invitation {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @OneToMany(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "sender_fk")
-    private Set<User> sender;
-    @OneToMany(fetch = FetchType.LAZY)
+    private User sender;
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "receiver_fk")
-    private Set<User> receiver;
+    private User receiver;
     private Timestamp timestamp;
     private boolean accepted;
 
