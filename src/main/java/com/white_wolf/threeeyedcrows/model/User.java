@@ -23,10 +23,9 @@ public class User {
 
     private String description;
 
-    private Long elo;
+    private String city;
 
-    @OneToMany(mappedBy = "id")
-    private Set<User> friends;
+    private Long elo;
 
     @OneToMany(mappedBy = "user")
     private Set<DailyReport> dailyReports;
