@@ -8,17 +8,18 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user_goals")
 public class UserGoal {
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
     private Long weekNumber;
+
     private boolean completed;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "goal")
+    @ManyToOne(fetch = FetchType.EAGER)
     private Goal goal;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_fk")
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 }

@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface UserGoalRepository extends JpaRepository<UserGoal, Long> {
 
-    @Query("SELECT u FROM UserGoal AS u WHERE u.user.id = :user_id")
-    List<UserGoal> getUserGoals(@Param("user_id") Long userId);
+    @Query("SELECT u FROM UserGoal AS u")
+    List<UserGoal> getUserGoals(@Param("userId") Long userId);
 }
