@@ -3,5 +3,8 @@ package com.white_wolf.threeeyedcrows.repository;
 import com.white_wolf.threeeyedcrows.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 public interface UserRepository extends JpaRepository<User, Long> {
+    public List<User> findAll();
 }

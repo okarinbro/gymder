@@ -19,10 +19,6 @@ public class DailyReport {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
-    public Timestamp getTimestamp() {
-        return timestamp;
-    }
-
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;
     }
