@@ -1,17 +1,15 @@
 package com.white_wolf.threeeyedcrows.model;
 
 import lombok.Data;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Data
-@EnableAutoConfiguration
-@Table(name = "goals")
 @Entity
+@Table(name = "goals")
 public class Goal {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String name;

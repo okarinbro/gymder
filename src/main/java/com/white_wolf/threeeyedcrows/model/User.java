@@ -9,7 +9,6 @@ import java.util.Set;
 @Table(name = "users")
 @Entity
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -29,9 +28,9 @@ public class User {
     @OneToMany(mappedBy = "id")
     private Set<User> friends;
 
-    @OneToMany(mappedBy = "user_id")
+    @OneToMany(mappedBy = "user")
     private Set<DailyReport> dailyReports;
 
-    @OneToMany(mappedBy = "user_id")
+    @OneToMany(mappedBy = "user")
     private Set<UserGoals> goals;
 }
