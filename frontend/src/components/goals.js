@@ -9,15 +9,21 @@ class Goals extends Component {
         ]
     }
 
-    handleClick(id) {
-        console.log(id)
+    handleClick = id => {
+        let tmp = this.state.goals.filter(goal => goal.id === id)[0];
+        tmp.status = tmp.status === "done" ? "undone" : "done";
+        console.log(tmp);
+        const goals = this.state.goals.map(goal => goal.id !== id ? goal : tmp);
+        console.log(goals);
+        this.setState({ goals });
+        console.log(this.state.goals[id]);
     }
 
 
 
     render() {
         return (<div><ul>{this.state.goals.map(goal =>
-            <li key={goal.id}><button style={{ backgroundColor: goal.status === "done" ? "#00ff00" : "#808080" }} onClick={() => this.handleClick(goal.id)}>{goal.name}</button></li>)}
+            <li key={goal.id}><button id={goal.id} name={goal.name} style={{ backgroundColor: goal.status === "done" ? "#00ff00" : "#808080" }} onClick={() => this.handleClick(goal.id)}>{goal.name}</button></li>)}
         </ul></div >);
     }
 }
