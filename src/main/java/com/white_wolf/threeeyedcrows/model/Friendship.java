@@ -5,17 +5,17 @@ import lombok.Data;
 import javax.persistence.*;
 
 @Data
-@Table(name = "friends")
+@Table(name = "friendships")
 @Entity
-public class Friend {
+public class Friendship {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    private User user1;
+    private User root;
 
     @ManyToOne
-    private User user2;
+    private User friend;
 }

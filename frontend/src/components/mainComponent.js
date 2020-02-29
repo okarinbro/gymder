@@ -48,12 +48,14 @@ class MainComponent extends Component {
         console.log(xhr);
     }
     render() {
+
         return (<div >
             <MainContent context={this.state.context} />
             <NavigationBar handleContextChange={this.handleContextChange} />
             <Ranking />
             <button onClick={this.getData}>Get</button>
         </div >);
+
     }
 }
 
