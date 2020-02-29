@@ -7,19 +7,21 @@ class Day extends Component {
     }
     handleSubmit(event) {
         console.log(event);
+        console.log(document.getElementById("waterInput").value);
+        event.preventDefault();
     }
     render() {
         return (<div>
             asdf
             <form onSubmit={this.handleSubmit}>My day<br />
                 <label>Water
-                    <input type="text" onChange={() => this.logChange(this.value)} />
+                    <input type="text" id="waterInput" onChange={() => this.logChange(this.value)} />
                 </label><br />
                 <label>Steps
-                    <input type="text" />
+                    <input type="text" id="stepsInput" />
                 </label><br />
                 <label>Calories
-                    <input type="text" />
+                    <input type="text" id="caloriesInput" />
                 </label>
                 <input type="submit" value="Send" />
             </form>

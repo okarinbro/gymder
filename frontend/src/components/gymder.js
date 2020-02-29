@@ -4,20 +4,20 @@ import '../styles/gymder.css'
 class Gymder extends Component {
     state = {
         users: [
-            { id: 1, name: "Okarinbro", describtion: "Big boii" },
-            { id: 2, name: "Shomrey", describtion: "Best boii" },
-            { id: 3, name: "Meehaw", describtion: "Nice boii" },
-            { id: 4, name: "Mervolt", describtion: "Good boii" }
+            { id: 1, name: "Okarinbro", description: "Big boii" },
+            { id: 2, name: "Shomrey", description: "Best boii" },
+            { id: 3, name: "Meehaw", description: "Nice boii" },
+            { id: 4, name: "Mervolt", description: "Good boii" }
         ],
         index: 0
     }
 
     decrementIndex = () => {
-        const index = (this.state.index == 0 ? this.state.users.length - 1 : this.state.index - 1);
+        const index = (this.state.index === 0 ? this.state.users.length - 1 : this.state.index - 1);
         this.setState({ index });
     }
     incrementIndex = () => {
-        const index = (this.state.index == this.state.users.length - 1 ? 0 : this.state.index + 1);
+        const index = (this.state.index === this.state.users.length - 1 ? 0 : this.state.index + 1);
         this.setState({ index });
     }
     invite = () => {
