@@ -29,7 +29,7 @@ public class ReportService implements IReportService {
     }
 
     public void deleteUsersDayReport(Timestamp timestamp, Long userId){
-        List<DailyReport> dailyReportList = this.dailyReportRepository.getUsersDayReport(userId);
+        List<DailyReport> dailyReportList = this.dailyReportRepository.findAllById(userId);
         Iterator<DailyReport> itDailyReport = dailyReportList.iterator();
         long time = timestamp.getTime();
         Calendar calNewReport = Calendar.getInstance();
