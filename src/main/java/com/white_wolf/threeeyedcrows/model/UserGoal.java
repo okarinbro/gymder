@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "user_goals")
-public class UserGoals {
+public class UserGoal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
