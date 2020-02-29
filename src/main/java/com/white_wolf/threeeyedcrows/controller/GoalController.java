@@ -1,10 +1,9 @@
 package com.white_wolf.threeeyedcrows.controller;
 
+import com.white_wolf.threeeyedcrows.exception.NotFoundException;
 import com.white_wolf.threeeyedcrows.model.UserGoal;
 import com.white_wolf.threeeyedcrows.service.IGoalService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,12 +24,14 @@ public class GoalController implements IGoalController {
     }
 
     @Override
-    public void addUserGoal(UserGoal userGoal) {
-
+    @PostMapping
+    public void addUserGoal(@RequestBody UserGoal userGoal) {
+        this.goalService.addUserGoal(userGoal);
     }
 
     @Override
-    public void updateUserGoal(UserGoal userGoal) {
-
+    @PutMapping
+    public void updateUserGoal(@RequestBody UserGoal userGoal) throws NotFoundException {
+        this.goalService.updateUserGoal(userGoal);
     }
 }

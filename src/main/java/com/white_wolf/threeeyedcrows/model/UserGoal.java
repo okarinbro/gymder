@@ -1,5 +1,7 @@
 package com.white_wolf.threeeyedcrows.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -22,4 +24,14 @@ public class UserGoal {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
+
+    @JsonIgnore
+    public User getUser() {
+        return this.user;
+    }
+
+    @JsonProperty
+    public void setUser(User user) {
+        this.user = user;
+    }
 }
