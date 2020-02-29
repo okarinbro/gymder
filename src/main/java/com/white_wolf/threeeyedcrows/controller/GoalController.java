@@ -19,7 +19,7 @@ public class GoalController implements IGoalController {
 
     @Override
     @GetMapping
-    public List<UserGoal> getUserGoals(Long userID) {
+    public List<UserGoal> getUserGoals(@RequestParam(name = "id") Long userID) {
         return this.goalService.getUserGoals(userID);
     }
 
