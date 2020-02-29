@@ -7,6 +7,7 @@ import Info from './info'
 import Gymder from './gymder';
 import Goals from './goals';
 import Day from './day';
+import Login from './login';
 
 class MainComponent extends Component {
     state = {
