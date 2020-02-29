@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 @Repository
 public interface DailyReportRepository extends JpaRepository<DailyReport, Long> {
-    @Query("FROM DailyReport as d where d.user.id = :userId")
-    public List<DailyReport> getUsersDayReport(@Param("userId") Long userId);
+
+    @Query("From DailyReport as dailyReport where dailyReport.user.id = :id")
+    List<DailyReport> findAllById(@Param("id") long id);
 }

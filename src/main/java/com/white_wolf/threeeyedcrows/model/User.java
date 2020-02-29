@@ -3,7 +3,6 @@ package com.white_wolf.threeeyedcrows.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @Table(name = "users")
@@ -23,22 +22,7 @@ public class User {
 
     private String description;
 
+    private String city;
+
     private Long elo;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    @OneToMany(mappedBy = "id")
-    private Set<User> friends;
-
-    @OneToMany(mappedBy = "user")
-    private Set<DailyReport> dailyReports;
-
-    @OneToMany(mappedBy = "user")
-    private Set<UserGoal> goals;
 }
