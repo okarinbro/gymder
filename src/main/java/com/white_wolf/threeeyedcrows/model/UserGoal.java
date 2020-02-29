@@ -1,7 +1,5 @@
 package com.white_wolf.threeeyedcrows.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -24,7 +22,6 @@ public class UserGoal {
 
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
-
 
     public boolean isCompleted() {
         return completed;
