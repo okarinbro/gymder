@@ -25,6 +25,22 @@ public class UserGoal {
     @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
+    public Long getId() {
+        return id;
+    }
+
+    public Long getWeekNumber() {
+        return weekNumber;
+    }
+
+    public boolean isCompleted() {
+        return completed;
+    }
+
+    public Goal getGoal() {
+        return goal;
+    }
+
     @JsonIgnore
     public User getUser() {
         return this.user;
