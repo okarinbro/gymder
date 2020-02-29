@@ -2,11 +2,16 @@ package com.white_wolf.threeeyedcrows.model;
 
 import lombok.Data;
 
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Data
+@Table(name = "users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String password;
@@ -20,6 +25,10 @@ public class User {
     private String description;
 
     private Long elo;
-    
-    private List<User> friends;
+
+    @OneToMany(mappedBy = "id")
+    private Set<User> friends;
+
+    @OneToMany(mappedBy = "user_id")
+    private Set<DailyReport> dailyReports;
 }
