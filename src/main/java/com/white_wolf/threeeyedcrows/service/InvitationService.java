@@ -22,6 +22,11 @@ public class InvitationService implements IInvitationService {
     }
 
     @Override
+    public List<Invitation> getSentInvitation(Long senderId) {
+        return invitationRepository.findBySenderId(senderId);
+    }
+
+    @Override
     public void postInvitation(Invitation invitation) {
         invitation.setId(null);
 

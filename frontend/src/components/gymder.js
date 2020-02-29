@@ -13,11 +13,11 @@ class Gymder extends Component {
     }
 
     decrementIndex = () => {
-        const index = (this.state.index == 0 ? this.state.users.length - 1 : this.state.index - 1);
+        const index = (this.state.index === 0 ? this.state.users.length - 1 : this.state.index - 1);
         this.setState({ index });
     }
     incrementIndex = () => {
-        const index = (this.state.index == this.state.users.length - 1 ? 0 : this.state.index + 1);
+        const index = (this.state.index === this.state.users.length - 1 ? 0 : this.state.index + 1);
         this.setState({ index });
     }
     invite = () => {
