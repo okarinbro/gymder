@@ -6,6 +6,7 @@ import FindFriend from './friends';
 import Info from './info'
 import Gymder from './gymder';
 import Goals from './goals';
+import Login from './login'
 import Day from './day';
 
 class MainComponent extends Component {
