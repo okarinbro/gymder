@@ -39,14 +39,12 @@ public class UsersPointsController implements IUsersPointsController {
     }
 
     private UserOutcome getUserOutcome(User user) {
-        System.out.println(user);
         UserOutcome userOutcome = new UserOutcome();
         userOutcome.setName(user.getName());
         userOutcome.setEmail(user.getEmail());
         userOutcome.setDescription(user.getDescription());
         userOutcome.setPoints(countPoints(user));
         userOutcome.setCity(user.getCity());
-        System.out.println(userOutcome);
         return userOutcome;
     }
 

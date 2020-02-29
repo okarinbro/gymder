@@ -14,17 +14,14 @@ public class Advisor {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Average kcals consumption: ")
                 .append(statistics.getAverageCalories())
-                .append("\n\n")
                 .append(advise(statistics.getAverageCalories(), KCALS_PER_DAY))
                 .append("\n\n");
         stringBuilder.append("Average steps per day: ")
                 .append(statistics.getAverageSteps())
-                .append("\n\n")
                 .append(advise(statistics.getAverageSteps(), STEPS_PER_DAY))
                 .append("\n\n");
         stringBuilder.append("Average water consumption: ")
                 .append(statistics.getAverageWaterConsumptiondouble())
-                .append("\n\n")
                 .append(advise(statistics.getAverageWaterConsumptiondouble(), WATER_LITRES))
                 .append("\n\n");
         stringBuilder.append("You have done: ").append(100 * statistics.getGoalsCompleted()).append(" %");
