@@ -1,4 +1,5 @@
 package com.white_wolf.threeeyedcrows.model;
 
-public class LoginStatus {
+public enum LoginStatus {
+    WRONG_USER, WRONG_PASSWORD, OK;
 }
