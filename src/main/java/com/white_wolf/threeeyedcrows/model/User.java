@@ -31,4 +31,7 @@ public class User {
 
     @OneToMany(mappedBy = "user_id")
     private Set<DailyReport> dailyReports;
+
+    @OneToMany(mappedBy = "user_id")
+    private Set<UserGoals> goals;
 }
