@@ -3,7 +3,6 @@ package com.white_wolf.threeeyedcrows.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Data
 @Table(name = "users")
@@ -26,50 +25,4 @@ public class User {
     private String city;
 
     private Long elo;
-
-    @OneToMany(mappedBy = "user")
-    private Set<DailyReport> dailyReports;
-
-    @OneToMany(mappedBy = "user")
-    private Set<UserGoal> goals;
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Long getElo() {
-        return elo;
-    }
-
-    public Set<User> getFriends() {
-        return friends;
-    }
-
-    public Set<DailyReport> getDailyReports() {
-        return dailyReports;
-    }
-
-    public Set<UserGoal> getGoals() {
-        return goals;
-    }
 }
