@@ -5,7 +5,7 @@ class Goals extends Component {
         goals: [
             { id: 1, name: "Eat 5 apples", status: "done" },
             { id: 2, name: "Run 3km", status: "undone" },
-            { id: 3, name: "Got o gym 3 times", status: "done" }
+            { id: 3, name: "Go to gym 3 times", status: "done" }
         ]
     }
 

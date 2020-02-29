@@ -30,11 +30,12 @@ class MainComponent extends Component {
         console.log(this.state.context);
     }
     render() {
-        return (<div >
-            <MainContent context={this.state.context} />
-            <NavigationBar handleContextChange={this.handleContextChange} />
-            <Ranking />
-        </div >);
+        return (
+            <div >
+                <MainContent context={this.state.context} />
+                <NavigationBar handleContextChange={this.handleContextChange} />
+                <Ranking />
+            </div >);
     }
 }
 
