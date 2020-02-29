@@ -6,7 +6,6 @@ import FindFriend from './friends';
 import Info from './info'
 import Gymder from './gymder';
 import Goals from './goals';
-import Login from './login'
 import Day from './day';
 
 class MainComponent extends Component {
@@ -64,7 +63,9 @@ class MainComponent extends Component {
             console.log(xhr.responseText)
         })
         // open the request with the verb and the url
-        xhr.open('GET', 'http://localhost:8080')
+
+        xhr.open('GET', 'http://localhost:8080/api/user/friends/?id=1')
+
         // send the request
         xhr.send()
         console.log(xhr);
