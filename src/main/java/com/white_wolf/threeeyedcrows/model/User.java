@@ -32,5 +32,5 @@ public class User {
     private Set<DailyReport> dailyReports;
 
     @OneToMany(mappedBy = "user")
-    private Set<UserGoals> goals;
+    private Set<UserGoal> goals;
 }
