@@ -3,11 +3,11 @@ package com.white_wolf.threeeyedcrows.model;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 import java.util.Set;
 
 @Data
 @Table(name = "users")
+@Entity
 public class User {
 
     @Id
@@ -26,9 +26,9 @@ public class User {
 
     private Long elo;
 
-    @OneToMany(mappedBy = "id")
+/*    @OneToMany(mappedBy = "id")
     private Set<User> friends;
 
     @OneToMany(mappedBy = "user_id")
-    private Set<DailyReport> dailyReports;
+    private Set<DailyReport> dailyReports;*/
 }
