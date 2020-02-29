@@ -26,9 +26,12 @@ public class User {
 
     private Long elo;
 
-/*    @OneToMany(mappedBy = "id")
+    @OneToMany(mappedBy = "id")
     private Set<User> friends;
 
     @OneToMany(mappedBy = "user_id")
-    private Set<DailyReport> dailyReports;*/
+    private Set<DailyReport> dailyReports;
+
+    @OneToMany(mappedBy = "user_id")
+    private Set<UserGoals> goals;
 }
