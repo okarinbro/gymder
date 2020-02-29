@@ -10,6 +10,7 @@ import java.util.List;
 
 @Repository
 public interface DailyReportRepository extends JpaRepository<DailyReport, Long> {
+
     @Query("From DailyReport as dailyReport where dailyReport.user.id = :id")
     List<DailyReport> findAllById(@Param("id") long id);
 }

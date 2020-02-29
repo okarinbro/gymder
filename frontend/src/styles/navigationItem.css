@@ -1,0 +1,9 @@
+.navigationItemButton{
+    width: 100%;
+    height: 50px;
+    background-color: red;
+    border: red;
+}
+.navigationItemButton:hover{
+    background-color: brown;
+}
