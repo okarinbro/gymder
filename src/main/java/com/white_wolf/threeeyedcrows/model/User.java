@@ -25,4 +25,6 @@ public class User {
     private String city;
 
     private Long elo;
+
+    private String pictureLink;
 }

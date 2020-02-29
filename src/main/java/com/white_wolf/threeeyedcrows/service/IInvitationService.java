@@ -6,5 +6,6 @@ import java.util.List;
 
 public interface IInvitationService {
     List<Invitation> getInvitations(Long receiverId);
+    List<Invitation> getSentInvitation(Long senderId);
     void postInvitation(Invitation invitation);
 }

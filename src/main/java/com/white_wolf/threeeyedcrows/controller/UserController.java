@@ -1,15 +1,16 @@
 package com.white_wolf.threeeyedcrows.controller;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.white_wolf.threeeyedcrows.model.LoginStatus;
 import com.white_wolf.threeeyedcrows.model.User;
+import com.white_wolf.threeeyedcrows.model.UserGymderData;
 import com.white_wolf.threeeyedcrows.model.UserLoginData;
 import com.white_wolf.threeeyedcrows.service.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/user")
@@ -43,6 +44,12 @@ public class UserController implements IUserController {
             return new ResponseEntity<>("User with this username already exist",  HttpStatus.BAD_REQUEST);
         else
             return new ResponseEntity<>("User created successfully", HttpStatus.OK);
+    }
+
+    @Override
+    @GetMapping("/gymder")
+    public List<UserGymderData> getUserGymderData(@RequestParam(name = "id") Long id) {
+        return this.userService.getUserGymderData(id);
     }
 
 
