@@ -30,7 +30,7 @@ class Login extends Component {
                 if (response.status === 200) {
                     console.log('login successful')
                     console.log('user id: ', response.headers.id)
-                    this.props.handleLogin();
+                    this.props.handleLogin({id: response.headers.id});
                 }
                 else {
                     console.log("wrong auth")
