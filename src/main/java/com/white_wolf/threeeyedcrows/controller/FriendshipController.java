@@ -1,5 +1,6 @@
 package com.white_wolf.threeeyedcrows.controller;
 
+import com.white_wolf.threeeyedcrows.exception.NotFoundException;
 import com.white_wolf.threeeyedcrows.model.User;
 import com.white_wolf.threeeyedcrows.service.FriendshipService;
 import com.white_wolf.threeeyedcrows.service.UserService;
@@ -23,7 +24,7 @@ public class FriendshipController implements IFriendshipController {
 
     @Override
     @PostMapping
-    public void addFriendship(@RequestParam(name = "firstUser") long firstUser, @RequestParam(name = "secondUser") String friendUsername) {
+    public void addFriendship(@RequestParam(name = "firstUser") long firstUser, @RequestParam(name = "secondUser") String friendUsername) throws NotFoundException {
         Optional<User> optionalFirstUser = userService.getUser(firstUser);
         Optional<User> optionalSecondUser = userService.getUserByUserName(friendUsername);
         if (optionalFirstUser.isPresent() && optionalSecondUser.isPresent()) {
@@ -31,7 +32,7 @@ public class FriendshipController implements IFriendshipController {
             User firstUserObject = userService.getUser(firstUser).get();
             friendshipService.addNewFriendship(firstUserObject, secondUserObject);
         } else {
-            System.out.println(String.format("Couldn't find users: %d, %d", firstUser, friendUsername));
+            throw new NotFoundException(String.format("Couldn't find users: %d, %s", firstUser, friendUsername));
         }
 
     }

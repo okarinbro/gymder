@@ -33,6 +33,7 @@ public class UsersPointsController implements IUsersPointsController {
                 .stream()
                 .map(Friendship::getFriend)
                 .map(this::getUserOutcome)
+                .sorted((o1, o2) -> (int) (o2.getPoints() - o1.getPoints()))
                 .collect(Collectors.toList());
         System.out.println(collect);
         return collect;

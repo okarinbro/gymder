@@ -54,9 +54,9 @@ public class Advisor {
 
     public static double getPoints(Statistics statistics, User user) {
         setParams(Calendar.getInstance().get(Calendar.YEAR) - user.getYear());
-        return max(0, statistics.getAverageSteps() - STEPS_PER_DAY) +
+        return round(max(0, statistics.getAverageSteps() - STEPS_PER_DAY) +
                 (-1) * abs(statistics.getAverageCalories() - KCALS_PER_DAY) +
-                max(0, statistics.getAverageWaterConsumptiondouble() - WATER_LITRES) + 2000 * statistics.getGoalsCompleted();
+                max(0, statistics.getAverageWaterConsumptiondouble() - WATER_LITRES) + 2000 * statistics.getGoalsCompleted());
     }
 
     private static String advise(double averageKcalConsumption, double expectedValue) {
