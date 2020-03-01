@@ -18,7 +18,7 @@ public class InvitationController implements IInvitationController {
 
     @Override
     @GetMapping
-    public List<Invitation> getInvitations(Long receiverId) {
+    public List<Invitation> getInvitations(@RequestParam(name = "id")Long receiverId) {
         return invitationService.getInvitations(receiverId);
     }
 
