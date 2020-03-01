@@ -1,7 +1,9 @@
 package com.white_wolf.threeeyedcrows.service;
 
 import com.white_wolf.threeeyedcrows.exception.NotFoundException;
+import com.white_wolf.threeeyedcrows.model.Goal;
 import com.white_wolf.threeeyedcrows.model.UserGoal;
+import com.white_wolf.threeeyedcrows.repository.GoalRepository;
 import com.white_wolf.threeeyedcrows.repository.UserGoalRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,9 +14,11 @@ import java.util.Optional;
 public class GoalService implements IGoalService {
 
     private UserGoalRepository userGoalRepository;
+    private GoalRepository goalRepository;
 
-    public GoalService(UserGoalRepository userGoalRepository) {
+    public GoalService(UserGoalRepository userGoalRepository, GoalRepository goalRepository) {
         this.userGoalRepository = userGoalRepository;
+        this.goalRepository = goalRepository;
     }
 
     @Override
@@ -39,4 +43,11 @@ public class GoalService implements IGoalService {
             userGoalRepository.save(userGoal);
         }
     }
+
+    @Override
+    public List<Goal> getAllGoals() {
+        return goalRepository.findAll();
+    }
+
+
 }
