@@ -24,6 +24,7 @@ public class ReportService implements IReportService {
 
     @Override
     public void addReport(DailyReport dailyReport) {
+        dailyReport.setTimestamp(new Timestamp(System.currentTimeMillis()));
         deleteUsersDayReport(dailyReport.getTimestamp(), dailyReport.getUser().getId());
         this.dailyReportRepository.save(dailyReport);
     }

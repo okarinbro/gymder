@@ -24,16 +24,21 @@ class Login extends Component {
 
         console.log(userData);
         event.preventDefault();
-
-        axios.post('http://localhost:8080/api/user/login', userData)
-            .then(function (response) {
-                if (response.status === 200) { this.props.handleLogin(); }
-                else { console.log("wrong auth") }
+        console.log(this.props);
+        axios.post('http://localhost:8080/api/user/login/', userData)
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log('login successful')
+                    console.log('user id: ', response.headers.id)
+                    this.props.handleLogin();
+                }
+                else {
+                    console.log("wrong auth")
+                }
             })
             .catch(function (error) {
-                console.log(error);
+                console.log({error: error});
             });
-        this.props.handleLogin();
         console.log("should run change");
 
         /* TODO: send POST request to login controller API and if user 
@@ -42,7 +47,7 @@ class Login extends Component {
 
     registerButtonOnClick = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8080/api/user/register', this.state)
+        axios.post('http://localhost:8080/api/user/register/', this.state)
             .then(function (response) {
                 console.log(response);
                 if (response.status === 200) {
@@ -98,9 +103,9 @@ class Login extends Component {
             <div className="loginWindow">
 
                 <form onSubmit={this.loginButtonOnClick}>
-                    <TextField id="outlined-basic" label="Login" onChange={this.usernameInputChangeHandler}></TextField>
+                    <TextField id="outlined-basic" label="Login" variant="outlined" onChange={this.usernameInputChangeHandler}></TextField>
                     <br></br>
-                    <TextField id="outlined-basic" label="Password" type="password" onChange={this.passwordInputChangeHandler}></TextField>
+                    <TextField id="outlined-basic" label="Password" type="password" variant="outlined" onChange={this.passwordInputChangeHandler}></TextField>
                     <br></br>
                     <Button className="loginButton" type="submit" variant="contained" color="primary" >Log in</Button>
                 </form>

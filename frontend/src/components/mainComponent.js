@@ -58,10 +58,11 @@ class MainComponent extends Component {
         console.log(this.state.context);
     }
 
-    handleLoginAccepted = () => {
+    handleLoginAccepted = (user) => {
         console.log("should change");
         const logged = true;
         this.setState({ logged });
+        this.props.handleLogin(user);
     }
 
     handleRegister = () => {
