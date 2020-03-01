@@ -4,8 +4,7 @@ import com.white_wolf.threeeyedcrows.model.User;
 
 import java.util.Calendar;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.max;
+import static java.lang.Math.*;
 
 public class Advisor {
     private static double WATER_LITRES = 2.5;
@@ -35,20 +34,20 @@ public class Advisor {
         setParams(Calendar.getInstance().get(Calendar.YEAR) - user.getYear());
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Average kcals consumption: ")
-                .append(statistics.getAverageCalories())
+                .append(round(statistics.getAverageCalories())).append(" ")
                 .append(advise(statistics.getAverageCalories(), KCALS_PER_DAY))
                 .append("\n\n");
         stringBuilder.append("Average steps per day: ")
-                .append(statistics.getAverageSteps())
+                .append(round(statistics.getAverageSteps())).append(" ")
                 .append(advise(statistics.getAverageSteps(), STEPS_PER_DAY))
                 .append("\n\n");
         stringBuilder.append("Average water consumption: ")
-                .append(statistics.getAverageWaterConsumptiondouble())
+                .append(round(statistics.getAverageWaterConsumptiondouble())).append(" ")
                 .append(advise(statistics.getAverageWaterConsumptiondouble(), WATER_LITRES))
                 .append("\n\n");
-        stringBuilder.append("You have done: ").append(100 * statistics.getGoalsCompleted()).append(" %");
-        stringBuilder.append("/n/n").append("You collected: ").append(getPoints(statistics, user)).append(" points.");
-        stringBuilder.append("/n/n").append(String.format("At your age you should do about %s, consume %s kcals and drink %s litres of water",
+        stringBuilder.append("You have done: ").append(round(100 * statistics.getGoalsCompleted())).append(" %");
+        stringBuilder.append("\n\n").append("You collected: ").append(round(getPoints(statistics, user))).append(" points.");
+        stringBuilder.append(" ").append(String.format("At your age you should do about %s, consume %s kcals and drink %s litres of water",
                 STEPS_PER_DAY, KCALS_PER_DAY, WATER_LITRES));
         return stringBuilder.toString();
     }
