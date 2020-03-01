@@ -85,14 +85,14 @@ public class UserService implements IUserService {
     }
 
     private List<User> filterGymderAlreadyInvited(List<User> users, Long id) {
-        List<Invitation> invites = this.invitationService.getInvitations(id);
+        List<Invitation> invites = this.invitationService.getSentInvitation(id);
         Iterator<User> itUsers = users.iterator();
         while (itUsers.hasNext()) {
             Iterator<Invitation> itInvites = invites.iterator();
             User currentIteratorUser = itUsers.next();
             while (itInvites.hasNext()) {
                 Invitation invite = itInvites.next();
-                if (currentIteratorUser.getId().equals(invite.getSender().getId())) {
+                if (currentIteratorUser.getId().equals(invite.getReceiver().getId())) {//CHECK
                     itUsers.remove();
                     users.remove(currentIteratorUser);
                 }
