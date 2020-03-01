@@ -20,7 +20,8 @@ class MainComponent extends Component {
         },
         contextName: "Info",
         context: <Info />,
-        logged: false,
+        register: false,
+        logged: false
     }
 
     mapContext = (contextName) => {
@@ -44,6 +45,12 @@ class MainComponent extends Component {
         const logged = true;
         this.setState({ logged });
     }
+
+    handleRegister = () => {
+        const register = !this.state.register;
+        console.log("handle register mainComponent");
+        this.setState({ register });
+    }
     logged = <div >
         <MainContent context={this.state.context} />
         <NavigationBar handleContextChange={this.handleContextChange} />
@@ -52,6 +59,7 @@ class MainComponent extends Component {
     </div >;
 
     notLogged = <Login handleLogin={this.handleLoginAccepted} />;
+
 
 
     getData() {
@@ -72,13 +80,12 @@ class MainComponent extends Component {
         console.log(xhr);
     }
     render() {
-
         return (this.state.logged ? <div >
             <MainContent context={this.state.context} />
             <NavigationBar handleContextChange={this.handleContextChange} />
             <Ranking />
             <button onClick={this.getData}>Get</button>
-        </div > : <Login handleLogin={this.handleLoginAccepted} />);
+        </div > : <Login handleLogin={this.handleLoginAccepted} register={this.state.register} handleRegister={this.handleRegister} />);
 
     }
 }

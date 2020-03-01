@@ -31,7 +31,7 @@ class Login extends Component {
     }
 
     render() {
-        return (
+        return (!this.props.register ?
             <div>
                 <form onSubmit={this.loginButtonOnClick}>
                     <label for="login">Login</label>
@@ -42,7 +42,25 @@ class Login extends Component {
                     <br></br>
                     <input type="submit" value="Login" />
                 </form>
+                <button onClick={this.props.handleRegister}>Register</button>
             </div>
+            : <div>
+                <form onSubmit={this.loginButtonOnClick}>
+                    <label for="login">Login</label>
+                    <input type="text" id="login" name="login" onChange={this.loginInputChangeHandler} />
+                    <br></br>
+                    <label for="firstName">Firstname</label>
+                    <input type="text" id="firstName" name="firstName" onChange={this.loginInputChangeHandler} />
+                    <br></br>
+                    <label for="surName">Surname</label>
+                    <input type="text" id="surName" name="surName" onChange={this.loginInputChangeHandler} />
+                    <br></br>
+                    <label for="password">Last name:</label>
+                    <input type="text" id="password" name="password" onChange={this.passwordInputChangeHandler} />
+                    <br></br>
+                    <input type="submit" value="Register" />
+                </form>
+                <button onClick={this.props.handleRegister}>Register</button></div>
         )
     }
 }
