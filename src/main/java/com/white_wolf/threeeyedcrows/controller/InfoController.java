@@ -19,6 +19,7 @@ public class InfoController implements IInfoController {
                 "All you have to do is write your daily report and you will get week summary at your email!\n" +
                 "Outcomes are cleared every week so you don't have to worry about that \n" +
                 "your friends have much more points than you ;) \n\n" +
-                "Take care of your health, you are amazing!";
+                "Take care of your health, you are amazing! \n\n\n\n News: If you have fever, cough, shortness of breath or breathing difficulties\n" +
+                "you should call 800 190 590 for health details. ";
     }
 }
