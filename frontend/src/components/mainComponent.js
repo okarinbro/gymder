@@ -9,6 +9,24 @@ import Goals from './goals';
 import Day from './day';
 import Login from './login';
 
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+
+
+
+const theme = createMuiTheme({
+    palette: {
+        primary: {
+            main: '#c2185b'
+        },
+        secondary: {
+            main: '#1e88e5',
+        }
+    },
+    status: {
+        danger: 'orange',
+    },
+});
+
 class MainComponent extends Component {
     state = {
         contextDict: {
@@ -79,14 +97,21 @@ class MainComponent extends Component {
         console.log(xhr);
     }
     render() {
-        return (this.state.logged ? <div >
-            <MainContent context={this.state.context} />
-            <NavigationBar handleContextChange={this.handleContextChange} />
-            <Ranking />
-            <button onClick={this.getData}>Get</button>
-        </div > : <Login handleLogin={this.handleLoginAccepted} register={this.state.register} handleRegister={this.handleRegister} />);
+        return (
+            this.state.logged ? <div >
+                <ThemeProvider theme={theme}>
+                    <MainContent context={this.state.context} />
+                    <NavigationBar handleContextChange={this.handleContextChange} />
+                    <Ranking />
+                    <button onClick={this.getData}>Get</button>
+                </ThemeProvider>
+            </div > :
+                <ThemeProvider theme={theme}>
+                    <Login handleLogin={this.handleLoginAccepted} register={this.state.register} handleRegister={this.handleRegister} />
+                </ThemeProvider>
 
-    }
+        )
+    };
 }
 
 export default MainComponent;
