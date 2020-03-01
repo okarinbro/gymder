@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface IFriendshipService {
     List<Friendship> getUsersFriends(Long id);
+
+    void addNewFriendship(User firstUSer, User secondUser);
 }
