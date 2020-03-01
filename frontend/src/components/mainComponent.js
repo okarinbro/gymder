@@ -72,7 +72,6 @@ class MainComponent extends Component {
             console.log(xhr.responseText)
         })
         // open the request with the verb and the url
-
         xhr.open('GET', 'http://localhost:8080/api/user/friends/?id=1')
 
         // send the request

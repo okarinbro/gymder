@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField'
+import '../styles/login.css'
 
 class Login extends Component {
     state = {
@@ -31,16 +34,17 @@ class Login extends Component {
     }
 
     render() {
+
         return (!this.props.register ?
-            <div>
+
+            <div className="loginWindow">
+
                 <form onSubmit={this.loginButtonOnClick}>
-                    <label for="login">Login</label>
-                    <input type="text" id="login" name="login" onChange={this.loginInputChangeHandler} />
+                    <TextField id="outlined-basic" label="Login" onChange={this.loginInputChangeHandler}></TextField>
                     <br></br>
-                    <label for="password">Last name:</label>
-                    <input type="text" id="password" name="password" onChange={this.passwordInputChangeHandler} />
+                    <TextField id="outlined-basic" label="Password" type="password" onChange={this.passwordInputChangeHandler}></TextField>
                     <br></br>
-                    <input type="submit" value="Login" />
+                    <Button type="submit" variant="contained" color="primary" >Log in</Button>
                 </form>
                 <button onClick={this.props.handleRegister}>Register</button>
             </div>
