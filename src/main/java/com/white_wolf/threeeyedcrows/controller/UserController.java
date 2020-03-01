@@ -54,14 +54,11 @@ public class UserController implements IUserController {
 
     @Override
     @GetMapping
-    public ResponseEntity<Boolean> doesUserExist(@RequestParam(name = "id") Long id) {
-        Optional<User> user = userService.getUser(id);
+    public ResponseEntity<Boolean> doesUserExist(@RequestParam(name = "username") String username) {
+        Optional<User> user = userService.getUserByUserName(username);
         if (user.isPresent()) {
             return new ResponseEntity<>(Boolean.TRUE, HttpStatus.OK);
         }
         return new ResponseEntity<>(Boolean.FALSE, HttpStatus.OK);
-
     }
-
-
 }

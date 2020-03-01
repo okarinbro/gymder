@@ -17,5 +17,5 @@ public interface IUserController {
 
     List<UserGymderData> getUserGymderData(Long id);
 
-    ResponseEntity<Boolean> doesUserExist(Long id);
+    ResponseEntity<Boolean> doesUserExist(String id);
 }
