@@ -13,7 +13,9 @@ class Login extends Component {
         description: '',
         city: '',
         elo: 0,
-        pictureLink: ''
+        pictureLink: '',
+        year: '',
+        weight: ''
     }
 
     loginButtonOnClick = (event) => {
@@ -30,6 +32,7 @@ class Login extends Component {
                 if (response.status === 200) {
                     console.log('login successful')
                     console.log('user id: ', response.headers.id)
+                    console.log(this.props);
                     this.props.handleLogin();
                 }
                 else {
@@ -37,9 +40,10 @@ class Login extends Component {
                 }
             })
             .catch(function (error) {
-                console.log({error: error});
+                console.log({ error: error });
             });
         console.log("should run change");
+        //this.props.handleLogin({ id: 1337 })
 
         /* TODO: send POST request to login controller API and if user 
            has successfully log on, notify App component */
@@ -59,6 +63,8 @@ class Login extends Component {
                     this.setState({ description: '' });
                     this.setState({ city: '' });
                     this.setState({ pictureLink: '' });
+                    this.setState({ year: '' });
+                    this.setState({ weight: '' });
                 }
                 else {
                     console.log("invalid response");
@@ -95,6 +101,12 @@ class Login extends Component {
     pictureInputChangeHandler = (event) => {
         this.setState({ pictureLink: event.target.value })
     }
+    yearInputChangeHandler = (event) => {
+        this.setState({ year: event.target.value })
+    }
+    weightInputChangeHandler = (event) => {
+        this.setState({ weight: event.target.value })
+    }
 
     render() {
 
@@ -127,6 +139,10 @@ class Login extends Component {
                     <TextField id="outlined-basic" label="City" onChange={this.cityInputChangeHandler}></TextField>
                     <br></br>
                     <TextField id="outlined-basic" label="Picture" onChange={this.pictureInputChangeHandler}></TextField>
+                    <br></br>
+                    <TextField id="outlined-basic" label="Year" onChange={this.yearInputChangeHandler}></TextField>
+                    <br></br>
+                    <TextField id="outlined-basic" label="Weight" onChange={this.weightInputChangeHandler}></TextField>
                     <br></br>
                     <Button className="loginButton" type="submit" variant="contained" color="primary" >Register</Button>
                 </form>
