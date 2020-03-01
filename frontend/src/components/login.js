@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField'
 import '../styles/login.css'
+const axios = require('axios');
 
 class Login extends Component {
     state = {
@@ -33,6 +34,13 @@ class Login extends Component {
 
     registerButtonOnClick = (event) => {
         event.preventDefault();
+        axios.post('http://localhost:8080/api/user/register', this.state)
+            .then(function (response) {
+                console.log(response);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         console.log(this.state);
         this.setState({ username: '' });
         this.setState({ password: '' });

@@ -81,6 +81,25 @@ class MainComponent extends Component {
 
 
     getData() {
+
+        const axios = require('axios');
+
+        axios.get('http://localhost:8080/api/user/friends/?id=1')
+            .then(function (response) {
+                // handle success
+                console.log(response);
+            })
+            .catch(function (error) {
+                // handle error
+                console.log(error);
+            })
+            .then(function () {
+                // always executed
+            });
+
+
+
+        /*
         // create a new XMLHttpRequest
         var xhr = new XMLHttpRequest()
 
@@ -94,7 +113,7 @@ class MainComponent extends Component {
 
         // send the request
         xhr.send()
-        console.log(xhr);
+        console.log(xhr);*/
     }
     render() {
         return (
