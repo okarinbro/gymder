@@ -1,0 +1,13 @@
+.loginWindow {
+    font-family: Roboto;
+    padding: 10px;
+    display: flex;
+    width: 300px;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.loginButton {
+    margin: 5px !important;
+    background-color: teal;
+}
