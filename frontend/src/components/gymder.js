@@ -37,7 +37,7 @@ class Gymder extends Component {
         return (
             this.state.users.length > 0 ?
             <div className="gymderMainDiv">
-                <img src={this.state.users[this.state.index].pictureLink} width="300" height="300"/>
+                <img src={this.state.users[this.state.index].pictureLink} width="350" height="350"/>
                 <div className="gymderDescriptionDiv">{this.state.users[this.state.index].name}</div>
                 <div> {this.state.users[this.state.index].description} </div>
                 <div >

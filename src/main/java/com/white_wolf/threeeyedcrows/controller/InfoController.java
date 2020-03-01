@@ -11,7 +11,7 @@ public class InfoController implements IInfoController {
     @Override
     @GetMapping
     public String getInfo() {
-        return "Let me guess.. You really really want to start working out but you have no motivation \n" +
+        return "Let me guess.. You really really want to start working out but you have no motivation\n" +
                 ".. or maybe you don't have mates willing to start with you? \n" + "" +
                 "Let me introduce Gymder! It's simple app that let you meet people from your city \n" +
                 "who are in the same situation! You can invite them and ask for jogging, squash or..\n" +

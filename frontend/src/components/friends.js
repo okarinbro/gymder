@@ -6,12 +6,8 @@ const axios = require("axios").default;
 
 class Friends extends Component {
     state = {
-        users: [
-            // {id: 1, name: "Przemysław Jabłecki", describtion: "Big boii", mail: "bikduyck@gmail.com"},
-            // {id: 2, name: "Michał Przybycień", describtion: "Best boii", mail: "ewenbeger@gmail.com"},
-            // {id: 3, name: "Michał Komar", describtion: "Nice boii", mail: "btsmlr@gmail.com"},
-            // {id: 4, name: "Michał Maksoń", describtion: "Good boii", mail: "ewenmor@gmail.com"}
-        ],
+        users: [],
+        invitations: [],
         friendUsername: ''
     }
 
@@ -20,6 +16,14 @@ class Friends extends Component {
             (response) => {
                 this.setState({users: response.data})
                 console.log(this.state.users)
+            }
+        ).catch((error) => {
+            console.log(error)
+        });
+        axios.get("http://localhost:8080/api/invitation/?id=201").then(
+            (response) => {
+                this.setState({invitations: response.data})
+                console.log(this.state.invitations)
             }
         ).catch((error) => {
             console.log(error)
@@ -36,14 +40,34 @@ class Friends extends Component {
             .catch(error => console.log(error))
     }
 
-    render() {
-        return (<div>
-            <ul>{this.state.users.map(user => <li key={user.id}>{user.name} - {user.email}</li>)}</ul>
-            <TextField id="outlined-basic" label="Friend's username" variant="outlined"
-                       onChange={this.usernameInputChangeHandler}></TextField>
-            <Button variant="contained" color="primary" onClick={this.sendFriendRequestButtonHandler}>Send friend
-                request</Button>
+    acceptInvitation = (id) => {
+        console.log(this.state.invitations)
+        let invitation = this.state.invitations.filter(c => c.sender.id !== id);
+        const invitations = this.state.invitations.map(inv => inv.sender.id !== id ? inv : invitation);
+        this.setState({invitations});
+        console.log(this.state.invitations)
+        // axios.post('http://localhost:8080/api/friendship/?firstUser=201&secondUser=' + this.state.friendUsername)
+        //     .then(response => console.log(response))
+        //     .catch(error => console.log(error))
+    }
 
+    render() {
+        return (<div><h3>Friends</h3>
+            <ul style={{listStyle: "none"}}>{this.state.users.map(user => <li
+                key={user.id}>{user.name} - {user.email}</li>)}</ul>
+            <form>
+                <TextField id="outlined-basic" label="Friend's username" variant="outlined"
+                           onChange={this.usernameInputChangeHandler}></TextField><br></br>
+                <Button style={{marginTop: "3px"}} variant="contained" color="primary"
+                        onClick={this.sendFriendRequestButtonHandler}>Send friend
+                request</Button>
+            </form>
+            <h3 style={{marginBottom: "3px", marginTop: "30px"}}>Invitations</h3>
+            <ul style={{listStyle: "none"}}>{this.state.invitations.map(user => <li
+                    key={user.id}>{user.sender.name} - {user.sender.email} <Button variant="contained" color="primary"
+                                                                                   onClick={() => this.acceptInvitation(user.sender.id)}>Accept</Button>
+                </li>
+            )}</ul>
         </div>);
     }
 }

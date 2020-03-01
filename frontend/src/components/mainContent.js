@@ -1,9 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import '../styles/mainContent.css';
-
 /* start drawer toolbar */
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import {useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -19,7 +18,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
 
 const drawerWidth = 240;
 
@@ -144,7 +142,7 @@ export default function MainContent(props) {
                 <List>
                     {['Info', 'Your day', 'Goals', 'Friends', 'Gymder'].map((text, index) => (
                         <ListItem button key={text} onClick={() => props.handleContextChange(text)}>
-                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+                            <ListItemIcon>{index % 2 === 0 ? <InboxIcon/> : <InboxIcon/>}</ListItemIcon>
                             <ListItemText primary={text} />
                         </ListItem>
                     ))}

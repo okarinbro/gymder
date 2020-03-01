@@ -12,6 +12,7 @@ class Ranking extends Component {
             // {id: 4, username: "Przemysław Jabłecki", points: 1278}
         ]
     }
+
     componentWillMount() {
         axios.get("http://localhost:8080/api/user/friends/?id=201").then(
             (response) => {
@@ -25,6 +26,7 @@ class Ranking extends Component {
 
     render() {
         return (<div className="rankMainDiv">
+            <h3 style={{marginLeft: "50px", fontSize: "25px"}}> Friend's rank </h3>
             <ol>
                 {this.state.users.map(user => <li key={user.id}
                                                   className="rankListItem">{user.name}: {user.points}</li>)}
