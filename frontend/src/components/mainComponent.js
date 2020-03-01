@@ -58,10 +58,11 @@ class MainComponent extends Component {
         console.log(this.state.context);
     }
 
-    handleLoginAccepted = () => {
+    handleLoginAccepted = (user) => {
         console.log("should change");
         const logged = true;
         this.setState({ logged });
+        this.props.userContext.handleLogin(user);
     }
 
     handleRegister = () => {
@@ -69,60 +70,14 @@ class MainComponent extends Component {
         console.log("handle register mainComponent");
         this.setState({ register });
     }
-    logged = <div >
-        <MainContent context={this.state.context} />
-        <NavigationBar handleContextChange={this.handleContextChange} />
-        <Ranking />
-        <button onClick={this.getData}>Get</button>
-    </div >;
-
-    notLogged = <Login handleLogin={this.handleLoginAccepted} />;
 
 
-
-    getData() {
-
-        const axios = require('axios');
-
-        axios.get('http://localhost:8080/api/user/friends/?id=1')
-            .then(function (response) {
-                // handle success
-                console.log(response);
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-            .then(function () {
-                // always executed
-            });
-
-
-
-        /*
-        // create a new XMLHttpRequest
-        var xhr = new XMLHttpRequest()
-
-        // get a callback when the server responds
-        xhr.addEventListener('load', () => {
-            // update the state of the component with the result here
-            console.log(xhr.responseText)
-        })
-        // open the request with the verb and the url
-        xhr.open('GET', 'http://localhost:8080/api/user/friends/?id=1')
-
-        // send the request
-        xhr.send()
-        console.log(xhr);*/
-    }
     render() {
         return (
             this.state.logged ? <div >
                 <ThemeProvider theme={theme}>
-                    <MainContent context={this.state.context} />
-                    <NavigationBar handleContextChange={this.handleContextChange} />
+                    <MainContent context={this.state.context} handleContextChange={this.handleContextChange} />
                     <Ranking />
-                    <button onClick={this.getData}>Get</button>
                 </ThemeProvider>
             </div > :
                 <ThemeProvider theme={theme}>
@@ -132,5 +87,7 @@ class MainComponent extends Component {
         )
     };
 }
+// <NavigationBar handleContextChange={this.handleContextChange} />
+//
 
 export default MainComponent;
