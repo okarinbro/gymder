@@ -13,4 +13,5 @@ public interface FriendshipRepository extends JpaRepository<Friendship, Long> {
 
     @Query("FROM Friendship as f WHERE f.root.id = :userId")
     List<Friendship> findFriendsByUserId(@Param("userId") Long userId);
+
 }

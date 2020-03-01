@@ -1,6 +1,5 @@
 package com.white_wolf.threeeyedcrows.controller;
 
-import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.white_wolf.threeeyedcrows.model.User;
 import com.white_wolf.threeeyedcrows.model.UserGymderData;
 import com.white_wolf.threeeyedcrows.model.UserLoginData;
@@ -17,4 +16,6 @@ public interface IUserController {
     ResponseEntity<String> register(User user);
 
     List<UserGymderData> getUserGymderData(Long id);
+
+    ResponseEntity<Boolean> doesUserExist(Long id);
 }

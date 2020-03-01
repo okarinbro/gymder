@@ -16,4 +16,6 @@ public interface InvitationRepository extends JpaRepository<Invitation, Long> {
 
     @Query("FROM Invitation i WHERE i.sender.id = :userId")
     List<Invitation> findBySenderId(@Param("userId") Long userId);
+
+
 }
