@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../styles/gymder.css'
 import Axios from 'axios';
 const axios = require('axios').default;
@@ -10,16 +10,17 @@ class Gymder extends Component {
             users: [],
             index: 0
         }
+
     }
 
 
     decrementIndex = () => {
         const index = (this.state.index === 0 ? this.state.users.length - 1 : this.state.index - 1);
-        this.setState({ index });
+        this.setState({index});
     }
     incrementIndex = () => {
         const index = (this.state.index === this.state.users.length - 1 ? 0 : this.state.index + 1);
-        this.setState({ index });
+        this.setState({index});
     }
     invite = () => {
         console.log("TODO implement invitation");
@@ -48,6 +49,7 @@ class Gymder extends Component {
                 </div>
 
         </div> : <div></div>);
+
     }
 }
 

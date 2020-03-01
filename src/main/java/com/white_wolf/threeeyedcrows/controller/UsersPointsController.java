@@ -50,6 +50,6 @@ public class UsersPointsController implements IUsersPointsController {
 
     private double countPoints(User user) {
         Statistics statistics = statistcsExtractor.getStatistics(user.getId());
-        return Advisor.getPoints(statistics);
+        return Advisor.getPoints(statistics, user);
     }
 }
