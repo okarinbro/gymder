@@ -62,7 +62,7 @@ class MainComponent extends Component {
         console.log("should change");
         const logged = true;
         this.setState({ logged });
-        this.props.handleLogin(user);
+        this.props.userContext.handleLogin(user);
     }
 
     handleRegister = () => {
@@ -70,14 +70,7 @@ class MainComponent extends Component {
         console.log("handle register mainComponent");
         this.setState({ register });
     }
-    logged = <div >
-        <MainContent context={this.state.context} />
-        <NavigationBar handleContextChange={this.handleContextChange} />
-        <Ranking />
-        <button onClick={this.getData}>Get</button>
-    </div >;
 
-    notLogged = <Login handleLogin={this.handleLoginAccepted} />;
 
     render() {
         return (

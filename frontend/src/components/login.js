@@ -32,8 +32,12 @@ class Login extends Component {
                 if (response.status === 200) {
                     console.log('login successful')
                     console.log('user id: ', response.headers.id)
+<<<<<<< HEAD
                     console.log(this.props);
                     this.props.handleLogin();
+=======
+                    this.props.handleLogin({id: response.headers.id});
+>>>>>>> 1a43ff70a2fb99c7f460436ee4ca07ef28e7c053
                 }
                 else {
                     console.log("wrong auth")
