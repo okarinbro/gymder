@@ -62,6 +62,11 @@ public class UserService implements IUserService {
         return userRepository.getUserById(id);
     }
 
+    @Override
+    public Optional<User> getUserByUserName(String username) {
+        return userRepository.getUserByUsername(username);
+    }
+
     private List<User> filterGymderFriends(List<User> users, Long id) {
         List<Friendship> friends = this.friendshipService.getUsersFriends(id);
         Iterator<User> itUsers = users.iterator();
