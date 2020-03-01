@@ -1,10 +1,10 @@
 .rankMainDiv {
     background-color: #00f0ff;
     width: 250px;
-    height: 300px;
+    height: 560px;
     position: fixed;
     top: 100px;
-    right: 30px;
+    right: 10px;
 }
 
 .rankListItem {

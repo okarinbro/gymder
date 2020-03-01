@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Friends extends Component {
     state = {
         users: [
-            { id: 1, name: "Okarinbro", describtion: "Big boii", mail: "bikduyck@gmail.com" },
-            { id: 2, name: "Shomrey", describtion: "Best boii", mail: "ewenbeger@gmail.com" },
-            { id: 3, name: "Meehaw", describtion: "Nice boii", mail: "btsmlr@gmail.com" },
-            { id: 4, name: "Mervolt", describtion: "Good boii", mail: "ewenmor@gmail.com" }
+            {id: 1, name: "Przemysław Jabłecki", describtion: "Big boii", mail: "bikduyck@gmail.com"},
+            {id: 2, name: "Michał Przybycień", describtion: "Best boii", mail: "ewenbeger@gmail.com"},
+            {id: 3, name: "Michał Komar", describtion: "Nice boii", mail: "btsmlr@gmail.com"},
+            {id: 4, name: "Michał Maksoń", describtion: "Good boii", mail: "ewenmor@gmail.com"}
         ]
     }
 
