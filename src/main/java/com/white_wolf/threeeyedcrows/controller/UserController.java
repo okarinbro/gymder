@@ -5,6 +5,7 @@ import com.white_wolf.threeeyedcrows.model.User;
 import com.white_wolf.threeeyedcrows.model.UserGymderData;
 import com.white_wolf.threeeyedcrows.model.UserLoginData;
 import com.white_wolf.threeeyedcrows.service.IUserService;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,16 @@ public class UserController implements IUserController {
         String username = userLoginData.getUsername();
         String password = userLoginData.getPassword();
         LoginStatus loginResult = this.userService.login(username, password);
-        if (loginResult.equals(LoginStatus.WRONG_USER))
+        if (loginResult.getStatus().equals(LoginStatus.Status.WRONG_USER))
             return new ResponseEntity<>("User does not exist", HttpStatus.BAD_REQUEST);
-        else if (loginResult.equals(LoginStatus.WRONG_PASSWORD))
+        else if (loginResult.getStatus().equals(LoginStatus.Status.WRONG_PASSWORD))
             return new ResponseEntity<>("Wrong password", HttpStatus.BAD_REQUEST);
-        else
-            return new ResponseEntity<>("Successful login", HttpStatus.OK);
+        else {
+            HttpHeaders responseHeaders = new HttpHeaders();
+            responseHeaders.add("id", loginResult.getId().toString());
+
+            return ResponseEntity.ok().headers(responseHeaders).body("Successful login");
+        }
     }
 
     @Override

@@ -27,13 +27,25 @@ public class UserService implements IUserService {
     @Override
     public LoginStatus login(String username, String password) {
         Optional<User> userOptional = this.userRepository.getUserByUsername(username);
-        if (userOptional.isEmpty())
-            return LoginStatus.WRONG_USER;
+        LoginStatus loginStatus = new LoginStatus();
+
+        if (userOptional.isEmpty()) {
+            loginStatus.setStatus(LoginStatus.Status.WRONG_USER);
+
+            return loginStatus;
+        }
         User user = userOptional.get();
-        if (!password.equals(user.getPassword()))
-            return LoginStatus.WRONG_PASSWORD;
-        else
-            return LoginStatus.OK;
+        if (!password.equals(user.getPassword())) {
+            loginStatus.setStatus(LoginStatus.Status.WRONG_PASSWORD);
+
+            return loginStatus;
+        }
+        else {
+            loginStatus.setStatus(LoginStatus.Status.OK);
+            loginStatus.setId(user.getId());
+
+            return loginStatus;
+        }
 
     }
 

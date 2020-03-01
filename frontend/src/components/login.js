@@ -29,6 +29,7 @@ class Login extends Component {
             .then((response) => {
                 if (response.status === 200) {
                     console.log('login successful')
+                    console.log('user id: ', response.headers.id)
                     this.props.handleLogin();
                 }
                 else {
