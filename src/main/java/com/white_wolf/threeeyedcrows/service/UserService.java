@@ -53,7 +53,7 @@ public class UserService implements IUserService {
         User currentUser = this.userRepository.getOne(id);
         allUsers.remove(currentUser);
         List<User> withoutFriends = filterGymderFriends(allUsers, id);
-        List<User> withoutInvites = filterGymderAlreadyInvited(allUsers, id);
+        List<User> withoutInvites = filterGymderAlreadyInvited(withoutFriends, id);
 
 
         return convertUsersToGymderData(withoutInvites);
@@ -67,7 +67,7 @@ public class UserService implements IUserService {
             User currentIteratorUser = itUsers.next();
             while(itFriends.hasNext()){
                 Friendship friend = itFriends.next();
-                if(currentIteratorUser.getId().equals(friend.getRoot().getId())){
+                if(currentIteratorUser.getId().equals(friend.getFriend().getId())){
                     itUsers.remove();
                     users.remove(currentIteratorUser);
                 }
@@ -75,7 +75,6 @@ public class UserService implements IUserService {
         }
         return users;
     }
-
 
     private List<User> filterGymderAlreadyInvited(List<User> users, Long id){
         List<Invitation> invites = this.invitationService.getInvitations(id);
