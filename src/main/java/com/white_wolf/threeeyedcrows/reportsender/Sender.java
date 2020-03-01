@@ -42,7 +42,7 @@ public class Sender {
 
     private void sendReportToUser(User user) throws IOException {
         Statistics statistics = statistcsExtractor.getStatistics(user.getId());
-        String advice = Advisor.getAdvice(statistics);
+        String advice = Advisor.getAdvice(statistics, user);
         sendRequest(user, advice);
     }
 

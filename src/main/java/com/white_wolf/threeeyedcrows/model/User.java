@@ -27,4 +27,9 @@ public class User {
     private Long elo;
 
     private String pictureLink;
+
+    private int year;
+
+    private int weight;
+
 }
