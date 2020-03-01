@@ -24,7 +24,15 @@ class Login extends Component {
 
         console.log(userData);
         event.preventDefault();
-        console.log(this.props);
+
+        axios.post('http://localhost:8080/api/user/login', userData)
+            .then(function (response) {
+                if (response.status === 200) { this.props.handleLogin(); }
+                else { console.log("wrong auth") }
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
         this.props.handleLogin();
         console.log("should run change");
 
@@ -37,18 +45,25 @@ class Login extends Component {
         axios.post('http://localhost:8080/api/user/register', this.state)
             .then(function (response) {
                 console.log(response);
+                if (response.status === 200) {
+                    console.log("proper response");
+                    this.setState({ username: '' });
+                    this.setState({ password: '' });
+                    this.setState({ name: '' });
+                    this.setState({ email: '' });
+                    this.setState({ description: '' });
+                    this.setState({ city: '' });
+                    this.setState({ pictureLink: '' });
+                }
+                else {
+                    console.log("invalid response");
+                }
             })
             .catch(function (error) {
                 console.log(error);
             });
         console.log(this.state);
-        this.setState({ username: '' });
-        this.setState({ password: '' });
-        this.setState({ name: '' });
-        this.setState({ email: '' });
-        this.setState({ description: '' });
-        this.setState({ city: '' });
-        this.setState({ pictureLink: '' });
+
         this.props.handleRegister();
     }
     usernameInputChangeHandler = (event) => {
