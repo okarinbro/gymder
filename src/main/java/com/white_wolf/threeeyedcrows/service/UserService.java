@@ -53,10 +53,6 @@ public class UserService implements IUserService {
         allUsers.remove(currentUser);
         List<User> withoutFriends = filterGymderFriends(allUsers, id);
         List<User> withoutInvites = filterGymderAlreadyInvited(withoutFriends, id);
-<<<<<<< HEAD
-
-=======
->>>>>>> 430cac37ec6529f040534e823fb4f63f0631882c
 
         return convertUsersToGymderData(withoutInvites);
     }
@@ -88,12 +84,7 @@ public class UserService implements IUserService {
         return users;
     }
 
-<<<<<<< HEAD
-    private List<User> filterGymderAlreadyInvited(List<User> users, Long id){
-=======
-
     private List<User> filterGymderAlreadyInvited(List<User> users, Long id) {
->>>>>>> 430cac37ec6529f040534e823fb4f63f0631882c
         List<Invitation> invites = this.invitationService.getInvitations(id);
         Iterator<User> itUsers = users.iterator();
         while (itUsers.hasNext()) {
