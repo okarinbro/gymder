@@ -119,16 +119,20 @@ class Login extends Component {
             <div className="loginWindow">
 
                 <form onSubmit={this.loginButtonOnClick}>
-                    <TextField id="outlined-basic" label="Login" variant="outlined" onChange={this.usernameInputChangeHandler}></TextField>
+                    <TextField className="loginField" id="outlined-basic" label="Login" variant="outlined"
+                               onChange={this.usernameInputChangeHandler}></TextField>
                     <br></br>
-                    <TextField id="outlined-basic" label="Password" type="password" variant="outlined" onChange={this.passwordInputChangeHandler}></TextField>
+                    <TextField className="loginField" id="outlined-basic" label="Password" type="password"
+                               variant="outlined" onChange={this.passwordInputChangeHandler}></TextField>
                     <br></br>
                     <Button className="loginButton" type="submit" variant="contained" color="primary" >Log in</Button>
+                    <Button className="loginButton" variant="contained" color="primary"
+                            onClick={this.props.handleRegister}>Register</Button>
                 </form>
                 <br></br>
-                <Button className="loginButton" variant="contained" color="primary" onClick={this.props.handleRegister}>Register</Button>
+
             </div>
-            : <div>
+                : <div className="loginWindow">
                 <form onSubmit={this.registerButtonOnClick}>
                     <TextField id="outlined-basic" label="Login" onChange={this.loginInputChangeHandler}></TextField>
                     <br></br>
@@ -149,8 +153,10 @@ class Login extends Component {
                     <TextField id="outlined-basic" label="Weight" onChange={this.weightInputChangeHandler}></TextField>
                     <br></br>
                     <Button className="loginButton" type="submit" variant="contained" color="primary" >Register</Button>
+                    <Button className="loginButton" variant="contained" color="primary"
+                            onClick={this.props.handleRegister}>Login</Button>
                 </form>
-                <Button className="loginButton" variant="contained" color="primary" onClick={this.props.handleRegister}>Login</Button></div>
+                </div>
         )
     }
 }

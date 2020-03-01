@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import '../styles/rank.css';
+
 const axios = require("axios")
 
 class Ranking extends Component {
@@ -12,8 +13,11 @@ class Ranking extends Component {
         ]
     }
     componentWillMount() {
-        axios.get("http://localhost:8080/api/users/friends/").then(
-            (response) => this.setState({ users: response.data })
+        axios.get("http://localhost:8080/api/user/friends/?id=201").then(
+            (response) => {
+                this.setState({users: response.data})
+                console.log(this.state.users)
+            }
         ).catch((error) => {
             console.log(error)
         })
@@ -23,7 +27,7 @@ class Ranking extends Component {
         return (<div className="rankMainDiv">
             <ol>
                 {this.state.users.map(user => <li key={user.id}
-                    className="rankListItem">{user.username}: {user.points}</li>)}
+                                                  className="rankListItem">{user.name}: {user.points}</li>)}
             </ol>
         </div>);
     }

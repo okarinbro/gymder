@@ -37,7 +37,12 @@ public class StatistcsExtractor {
         double averageSteps = getAverage(reports, DailyReport::getSteps);
         List<UserGoal> userGoals = userGoalRepository.getUserGoals(id);
         long done = userGoals.stream().filter(UserGoal::isCompleted).count();
-        double goalsPercent = done / userGoals.size();
+        double goalsPercent;
+        if (userGoals.size() == 0) {
+            goalsPercent = 0;
+        } else {
+            goalsPercent = done / userGoals.size();
+        }
         return new Statistics(averageWaterConsumption, averageCalories, averageSteps, goalsPercent);
     }
 
