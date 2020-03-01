@@ -22,9 +22,13 @@ class Info extends Component {
             color: "black",
             backgroundColor: "light_blue",
             padding: "40px",
-            fontFamily: "Arial"
+            fontFamily: "Arial",
+            textAlign: 'justify'
         };
-        return (<div><Typography style={textStyle}>{this.state.info}</Typography></div>);
+        return (
+            <div><h1 style={{fontSize: "45px"}}>GYMDER</h1> <Typography style={textStyle}>{this.state.info}</Typography>
+                <p>Authors:<br/>Przemyslaw Jablecki <br/>Michal Komar <br/> Michal Makson <br/> Michal
+                    Przybycien<br/></p></div>);
     }
 }
 
