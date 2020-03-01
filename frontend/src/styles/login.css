@@ -1,5 +1,6 @@
 .loginWindow {
     font-family: Roboto;
+    top: 50px;
     padding: 10px;
     display: flex;
     width: 300px;

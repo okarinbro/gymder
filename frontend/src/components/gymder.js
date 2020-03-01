@@ -1,16 +1,18 @@
 import React, {Component} from 'react';
 import '../styles/gymder.css'
+import Axios from 'axios';
+const axios = require('axios').default;
 
 class Gymder extends Component {
-    state = {
-        users: [
-            {id: 1, name: "Przemysław Jabłecki", description: "Big boii", img_src: "https://i.imgur.com/wjNUctu.jpg"},
-            {id: 2, name: "Michał Przybycień", description: "Best boii", img_src: "https://i.imgur.com/JHQ7af4.jpg"},
-            {id: 3, name: "Michał Komar", description: "Nice boii", img_src: "https://i.imgur.com/tfDu50I.jpg"},
-            {id: 4, name: "Michał Maksoń", description: "Good boii", img_src: "https://i.imgur.com/SjdwbgA.jpg"}
-        ],
-        index: 0
+    constructor(props) {
+        super(props)
+        this.state = {
+            users: [],
+            index: 0
+        }
+
     }
+
 
     decrementIndex = () => {
         const index = (this.state.index === 0 ? this.state.users.length - 1 : this.state.index - 1);
@@ -24,18 +26,30 @@ class Gymder extends Component {
         console.log("TODO implement invitation");
     }
 
-    render() {
-        return (<div className="gymderMainDiv">
-            <img src={this.state.users[this.state.index].img_src} top="10" width="300" height="300"/>
-            <div className="gymderDescriptionDiv">{this.state.users[this.state.index].name}</div>
-            <div> {this.state.users[this.state.index].description} </div>
-            <div>
-                <button className="gymderSideButton" onClick={this.decrementIndex}>Previous</button>
-                <button className="gymderCentralButton" onClick={this.invite}>Invite</button>
-                <button className="gymderSideButton" onClick={this.incrementIndex}>Next</button>
-            </div>
+    componentDidMount() {
+        axios.get('http://localhost:8080/api/user/gymder/?id=201').then((response) => {
+            console.log(response.data)
+            this.setState({ users: response.data })
+            console.log({state: this.state})
+        })
+    }
 
-        </div>);
+
+    render() {
+        return (
+            this.state.users.length > 0 ?
+            <div className="gymderMainDiv">
+                <img src={this.state.users[this.state.index].pictureLink} width="200" height="100" />
+                <div className="gymderDescriptionDiv">{this.state.users[this.state.index].name}</div>
+                <div> {this.state.users[this.state.index].description} </div>
+                <div >
+                    <button className="gymderSideButton" onClick={this.decrementIndex}>Previous</button>
+                    <button className="gymderCentralButton" onClick={this.invite}>Invite</button>
+                    <button className="gymderSideButton" onClick={this.incrementIndex}>Next</button>
+                </div>
+
+        </div> : <div></div>);
+
     }
 }
 
