@@ -5,7 +5,7 @@ import com.white_wolf.threeeyedcrows.service.IReportService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/report")
+@RequestMapping("/api/report/")
 public class ReportController implements IReportController {
 
     private IReportService reportService;

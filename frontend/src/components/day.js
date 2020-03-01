@@ -1,29 +1,54 @@
 import React, { Component } from 'react';
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+const axios = require('axios').default;
 
 class Day extends Component {
-    state = {}
+    state = {
+        water: 0,
+        steps: 0,
+        calories: 0
+    }
+
     logChange = value => {
         console.log(value)
     }
-    handleSubmit(event) {
-        console.log(event);
-        console.log(document.getElementById("waterInput").value);
+
+    handleSubmit = (event) => {
         event.preventDefault();
+        console.log(this.state);
+
+        const requestBody = {
+            steps: this.state.steps,
+            calories: this.state.calories,
+            water: this.state.water
+        }
+
+        //axios.post("http://localhost:8080/api/report")
     }
+
+    waterInputChangeHandler = (event) => {
+        this.setState({ water: event.target.value })
+    }
+
+    caloriesInputChangeHandler = (event) => {
+        this.setState({ calories: event.target.value })
+    }
+
+    stepsInputChangeHandler = (event) => {
+        this.setState({ steps: event.target.value })
+    }
+
     render() {
         return (<div>
-            asdf
             <form onSubmit={this.handleSubmit}>My day<br />
-                <label>Water
-                    <input type="text" id="waterInput" onChange={() => this.logChange(this.value)} />
-                </label><br />
-                <label>Steps
-                    <input type="text" id="stepsInput" />
-                </label><br />
-                <label>Calories
-                    <input type="text" id="caloriesInput" />
-                </label>
-                <input type="submit" value="Send" />
+                <TextField id="outlined-basic" label="Water" variant="outlined" onChange={this.waterInputChangeHandler}/>
+                <br />
+                <TextField id="outlined-basic" label="Steps" variant="outlined" onChange={this.stepsInputChangeHandler}/>
+                <br />
+                <TextField id="outlined-basic" label="Calories" variant="outlined" onChange={this.caloriesInputChangeHandler}/>
+                <br />
+                <Button type="submit" variant="contained" color="primary" > Submit </Button>
             </form>
         </div>);
     }
