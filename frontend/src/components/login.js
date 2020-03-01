@@ -25,7 +25,7 @@ class Login extends Component {
         console.log(userData);
         event.preventDefault();
 
-        axios.post('http://localhost:8080/api/user/login', userData)
+        axios.post('http://localhost:8080/api/user/login/', userData)
             .then(function (response) {
                 if (response.status === 200) { this.props.handleLogin(); }
                 else { console.log("wrong auth") }
@@ -42,7 +42,7 @@ class Login extends Component {
 
     registerButtonOnClick = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8080/api/user/register', this.state)
+        axios.post('http://localhost:8080/api/user/register/', this.state)
             .then(function (response) {
                 console.log(response);
                 if (response.status === 200) {
