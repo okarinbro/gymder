@@ -37,7 +37,7 @@ public class GoalController implements IGoalController {
     }
 
     @Override
-    @GetMapping(name = "all/")
+    @GetMapping(value = "all/")
     public List<Goal> getAllGoals() {
         return goalService.getAllGoals();
     }

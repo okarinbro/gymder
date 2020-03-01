@@ -24,7 +24,14 @@ class Day extends Component {
             water: this.state.water
         }
 
-        //axios.post("http://localhost:8080/api/report")
+        axios.put("http://localhost:8080/api/report/", requestBody).then((response) => {
+            if (response.status === 200) {
+                console.log('Report submit succesful')
+            }
+            else {
+                console.log("Report submit failed")
+            }
+        })
     }
 
     waterInputChangeHandler = (event) => {
