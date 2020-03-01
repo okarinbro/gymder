@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
+import Typography from '@material-ui/core/Typography'
+
 const axios = require('axios').default;
 
 class Info extends Component {
@@ -9,14 +11,20 @@ class Info extends Component {
 
     componentWillMount() {
         axios.get("http://localhost:8080/api/info/").then(
-            (response) => this.setState({ info: response.data })
+            (response) => this.setState({info: response.data})
         ).catch((error) => {
             console.log(error)
         })
     }
 
     render() {
-        return (<div>{this.state.info}</div>);
+        const textStyle = {
+            color: "black",
+            backgroundColor: "light_blue",
+            padding: "40px",
+            fontFamily: "Arial"
+        };
+        return (<div><Typography style={textStyle}>{this.state.info}</Typography></div>);
     }
 }
 
