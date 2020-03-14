@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/mainContent.css';
 /* start drawer toolbar */
 import clsx from 'clsx';
-import {useTheme} from '@material-ui/core/styles';
+import {makeStyles, useTheme} from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
