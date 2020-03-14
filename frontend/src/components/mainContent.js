@@ -19,6 +19,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -137,6 +138,7 @@ export default function MainContent(props) {
                     <IconButton onClick={handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
+
                 </div>
                 <Divider />
                 <List>
